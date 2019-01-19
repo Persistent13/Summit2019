@@ -11,10 +11,11 @@
 
 - Azure Application Insights
 - How to effectivly use Application Insights in PowerShell code
+- How to build a PowerBI dashboard
 
 ## Why?
 
-- Need logging information
+- Need logging information of anything happening in code
 - Infrastructure handled for you
 - Integrates easily with PowerShell
 - Alerts
