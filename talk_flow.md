@@ -4,6 +4,12 @@
 - Work for PDQ.com
 - On the QA team
 
+# What is application (code) monitoring?
+
+- Monitor from inside your modules
+- Errors
+- Measure execution time of specific code blocks
+
 # What is application insights?
 
 - Is now included as part of Azure Monitor (done after talk accepted! 😒)

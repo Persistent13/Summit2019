@@ -11,10 +11,10 @@ $tc.TrackEvent('Hello World!')
 # Can also include properties and metrics in IDictionary
 # Custom properties are limited to:
 # Max key length: 150 Max value length: 8192
-$props = [System.Collections.Generic.Dictionary[string,string]]::new().Add('prop1','value1')
+$props = [System.Collections.Generic.Dictionary[string, string]]::new().Add('prop1','value1')
 # Custom metrics are limited to:
 # Max key length: 150 Max value [double]::MaxValue Min value [double]::MinValue
-$metrics = [System.Collections.Generic.Dictionary[string,double]]::new().Add('metric', 1000)
+$metrics = [System.Collections.Generic.Dictionary[string, double]]::new().Add('metric', 1000)
 $tc.TrackEvent('Hello Metrics and properties!', $props, $metrics)
 
 # https://docs.microsoft.com/en-us/azure/application-insights/application-insights-data-model-trace-telemetry
@@ -37,3 +37,7 @@ try {
     $tc.TrackException($err)
     $tc.Flush()
 }
+
+# Run a script block when a module is unloaded
+# Does not run when powershell is closed
+$MyInvocation.MyCommand.ScriptBlock.Module.OnRemove = { 'output' }
