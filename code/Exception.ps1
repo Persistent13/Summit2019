@@ -1,6 +1,12 @@
 # Exceptions can also be tracked!
 # https://docs.microsoft.com/en-us/azure/application-insights/application-insights-data-model-exception-telemetry
 
+# [Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry]::new()
+# Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry new()
+# Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry new(System.Exception exception)
+# Microsoft.ApplicationInsights.DataContracts.ExceptionTelemetry new(System.Collections.Generic.IEnumerable[Microsoft.ApplicationInsights.DataContracts.ExceptionDetailsInfo] exceptionDetailsInfoList,
+# System.Nullable[Microsoft.ApplicationInsights.DataContracts.SeverityLevel] severityLevel, string problemId, System.Collections.Generic.IDictionary[string,string] properties, System.Collections.Generic.IDictionary[string,double] measurements)
+
 # Tracking an exception
 try {
     0/0
