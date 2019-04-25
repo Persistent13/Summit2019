@@ -2,13 +2,14 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "Microsoft.ApplicationInsights/2.8.1": {
+      "Microsoft.ApplicationInsights/2.9.1": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
           "System.Diagnostics.DiagnosticSource": "4.5.0",
           "System.Diagnostics.StackTrace": "4.3.0",
-          "System.Net.Requests": "4.3.0"
+          "System.Net.Requests": "4.3.0",
+          "System.Threading.Thread": "4.3.0"
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.ApplicationInsights.dll": {}
@@ -469,6 +470,42 @@
         },
         "runtime": {
           "lib/netstandard1.6/System.Linq.dll": {}
+        }
+      },
+      "System.Management.Automation/6.1.2": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Management.Automation.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-arm/lib/netstandard2.0/System.Management.Automation.dll": {
+            "assetType": "runtime",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-x64/lib/netstandard2.0/System.Management.Automation.dll": {
+            "assetType": "runtime",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx/lib/netstandard2.0/System.Management.Automation.dll": {
+            "assetType": "runtime",
+            "rid": "osx"
+          },
+          "runtimes/win-arm/lib/netstandard2.0/System.Management.Automation.dll": {
+            "assetType": "runtime",
+            "rid": "win-arm"
+          },
+          "runtimes/win-arm64/lib/netstandard2.0/System.Management.Automation.dll": {
+            "assetType": "runtime",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/lib/netstandard2.0/System.Management.Automation.dll": {
+            "assetType": "runtime",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/lib/netstandard2.0/System.Management.Automation.dll": {
+            "assetType": "runtime",
+            "rid": "win-x86"
+          }
         }
       },
       "System.Net.Http/4.3.0": {
@@ -973,14 +1010,26 @@
         "compile": {
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
+      },
+      "System.Threading.Thread/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Threading.Thread.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Threading.Thread.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "Microsoft.ApplicationInsights/2.8.1": {
-      "sha512": "p8n64aouzVF06zEyKKOYOB5sbVJd+GFs1A9ykLEVP9XNHTcmAvHbVgtLpUoHuvoWShYOkGW2ato/lIKiUsxIUw==",
+    "Microsoft.ApplicationInsights/2.9.1": {
+      "sha512": "gAC+bFCr10ckAdM6VJ+aL0yfYfbYuklukYJoMjaSCOVHH/h4Xr9SiyPq+Befk/yUSdSv7Fa3nl0ynLATKIwKng==",
       "type": "package",
-      "path": "microsoft.applicationinsights/2.8.1",
+      "path": "microsoft.applicationinsights/2.9.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -990,12 +1039,12 @@
         "lib/net46/Microsoft.ApplicationInsights.xml",
         "lib/netstandard1.3/Microsoft.ApplicationInsights.dll",
         "lib/netstandard1.3/Microsoft.ApplicationInsights.xml",
-        "microsoft.applicationinsights.2.8.1.nupkg.sha512",
+        "microsoft.applicationinsights.2.9.1.nupkg.sha512",
         "microsoft.applicationinsights.nuspec"
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "a/iSwnRZb+LHFk49hQOyThh/ZNC3vsbZsF65XwQIb863qF6msmhdQtxGXFL28Ob2NsCz/drEj28BJd/YPpLRBg==",
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -1217,7 +1266,7 @@
       ]
     },
     "runtime.native.System.Net.Http/4.3.0": {
-      "sha512": "ZVuZJqnnegJhd2k/PtAbbIcZ3aZeITq3sj06oKfMBSfphW3HDmk/t4ObvbOk/JA/swGR0LNqMksAh/f7gpTROg==",
+      "sha512": "guqHgQOK2eUgtJae2VKjNawBn1xjC0hfOt5wASHa60XHbIdCsQlqtvMsFG+3hy7yp88V+gi9fZCjubuDkeakcQ==",
       "type": "package",
       "path": "runtime.native.system.net.http/4.3.0",
       "files": [
@@ -1282,7 +1331,7 @@
       ]
     },
     "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple/4.3.0": {
-      "sha512": "kVXCuMTrTlxq4XOOMAysuNwsXWpYeboGddNGpIgNSZmv1b6r/s/DPk0fYMB7Q5Qo4bY68o48jt4T4y5BVecbCQ==",
+      "sha512": "Kh9W4agE0r/hK8AX1LvyQI2NrKHBL8pO0gRoDTdDb0LL6Ta1Z2OtFx3lOaAE0ZpCUc/dt9Wzs3rA7a3IsKdOVA==",
       "type": "package",
       "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.apple/4.3.0",
       "files": [
@@ -1360,7 +1409,7 @@
       ]
     },
     "System.Buffers/4.3.0": {
-      "sha512": "Pcv2b27ffpu09pjN3PgbnQWYEdhOBcesYYsmQO/tZC8Imw74TJJ8X1j+/+Q7uWprz0/sQiUpuCmYsY1w5GSMvg==",
+      "sha512": "ratu44uTIHgeBeI0dE8DWvmXVBSo4u7ozRZZHOMmK/JPpYyo0dAfgSiHlpiObMQ5lEtEyIXA40sKRYg5J6A8uQ==",
       "type": "package",
       "path": "system.buffers/4.3.0",
       "files": [
@@ -1509,7 +1558,7 @@
       ]
     },
     "System.Collections.Immutable/1.3.0": {
-      "sha512": "0W3JrRFwIy6ypRzgpotynLkds7RUWmNSIGx4sxeBaVttgQvASEX2CAwjvQY7+LMFv24LuxzbEPyHBehu4whrcw==",
+      "sha512": "zukBRPUuNxwy9m4TGWLxKAnoiMc9+B+8VXeXVyPiBPvOd7yLgAlZ1DlsRWJjMx4VsvhhF2+6q6kO2GRbPja6hA==",
       "type": "package",
       "path": "system.collections.immutable/1.3.0",
       "files": [
@@ -1593,7 +1642,7 @@
       ]
     },
     "System.Diagnostics.DiagnosticSource/4.5.0": {
-      "sha512": "UumL3CJklk5WyEt0eImPmjeuyY1JgJ7Thmg2hAeZGKCv+9iuuAsoc2wcXjypdo3J8VNEmVCH2Bgn/kIw8NI2bA==",
+      "sha512": "eIHRELiYDQvsMToML81QFkXEEYXUSUT2F28t1SGrevWqP+epFdw80SyAXIKTXOHrIEXReFOEnEr7XlGiC2GgOg==",
       "type": "package",
       "path": "system.diagnostics.diagnosticsource/4.5.0",
       "files": [
@@ -2185,8 +2234,27 @@
         "system.linq.nuspec"
       ]
     },
+    "System.Management.Automation/6.1.2": {
+      "sha512": "/3lBLthELQhfNmI0SwomEblhjcU3RiyzlsPRDFcnOFEWRSsLkFX95ei46msuKT+uyKWUgdCAHbLOPx06o6wjmw==",
+      "type": "package",
+      "path": "system.management.automation/6.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ref/netstandard2.0/System.Management.Automation.dll",
+        "runtimes/linux-arm/lib/netstandard2.0/System.Management.Automation.dll",
+        "runtimes/linux-x64/lib/netstandard2.0/System.Management.Automation.dll",
+        "runtimes/osx/lib/netstandard2.0/System.Management.Automation.dll",
+        "runtimes/win-arm/lib/netstandard2.0/System.Management.Automation.dll",
+        "runtimes/win-arm64/lib/netstandard2.0/System.Management.Automation.dll",
+        "runtimes/win-x64/lib/netstandard2.0/System.Management.Automation.dll",
+        "runtimes/win-x86/lib/netstandard2.0/System.Management.Automation.dll",
+        "system.management.automation.6.1.2.nupkg.sha512",
+        "system.management.automation.nuspec"
+      ]
+    },
     "System.Net.Http/4.3.0": {
-      "sha512": "6BBc6BUa7pWFL7KUI/c8wb18IobTZHTtcQKksxJI5F9DRDShdtOvBEJzg5jJbFdTll7gRE+5yXUlq72ciLE+QQ==",
+      "sha512": "sYg+FtILtRQuYWSIAuNOELwVuVsxVyJGWQyOnlAzhV4xvhyFnON1bAzYYC+jjRW8JREM45R0R5Dgi8MTC5sEwA==",
       "type": "package",
       "path": "system.net.http/4.3.0",
       "files": [
@@ -3591,12 +3659,52 @@
         "system.threading.tasks.4.3.0.nupkg.sha512",
         "system.threading.tasks.nuspec"
       ]
+    },
+    "System.Threading.Thread/4.3.0": {
+      "sha512": "OHmbT+Zz065NKII/ZHcH9XO1dEuLGI1L2k7uYss+9C1jLxTC9kTZZuzUOyXHayRk+dft9CiDf3I/QZ0t8JKyBQ==",
+      "type": "package",
+      "path": "system.threading.thread/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Threading.Thread.dll",
+        "lib/netcore50/_._",
+        "lib/netstandard1.3/System.Threading.Thread.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.Threading.Thread.dll",
+        "ref/netstandard1.3/System.Threading.Thread.dll",
+        "ref/netstandard1.3/System.Threading.Thread.xml",
+        "ref/netstandard1.3/de/System.Threading.Thread.xml",
+        "ref/netstandard1.3/es/System.Threading.Thread.xml",
+        "ref/netstandard1.3/fr/System.Threading.Thread.xml",
+        "ref/netstandard1.3/it/System.Threading.Thread.xml",
+        "ref/netstandard1.3/ja/System.Threading.Thread.xml",
+        "ref/netstandard1.3/ko/System.Threading.Thread.xml",
+        "ref/netstandard1.3/ru/System.Threading.Thread.xml",
+        "ref/netstandard1.3/zh-hans/System.Threading.Thread.xml",
+        "ref/netstandard1.3/zh-hant/System.Threading.Thread.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.threading.thread.4.3.0.nupkg.sha512",
+        "system.threading.thread.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Microsoft.ApplicationInsights >= 2.8.1",
-      "NETStandard.Library >= 2.0.3"
+      "Microsoft.ApplicationInsights >= 2.9.1",
+      "NETStandard.Library >= 2.0.3",
+      "System.Management.Automation >= 6.1.2"
     ]
   },
   "packageFolders": {
@@ -3606,11 +3714,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documents\\Git\\Summit2019\\code\\binary\\summit2019\\summit2019.csproj",
-      "projectName": "summit2019",
-      "projectPath": "D:\\Documents\\Git\\Summit2019\\code\\binary\\summit2019\\summit2019.csproj",
+      "projectUniqueName": "D:\\Documents\\Git\\Summit2019\\code\\binary\\binary.csproj",
+      "projectName": "binary",
+      "projectPath": "D:\\Documents\\Git\\Summit2019\\code\\binary\\binary.csproj",
       "packagesPath": "C:\\Users\\dakota\\.nuget\\packages\\",
-      "outputPath": "D:\\Documents\\Git\\Summit2019\\code\\binary\\summit2019\\obj\\",
+      "outputPath": "D:\\Documents\\Git\\Summit2019\\code\\binary\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3642,13 +3750,17 @@
         "dependencies": {
           "Microsoft.ApplicationInsights": {
             "target": "Package",
-            "version": "[2.8.1, )"
+            "version": "[2.9.1, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
             "version": "[2.0.3, )",
             "autoReferenced": true
+          },
+          "System.Management.Automation": {
+            "target": "Package",
+            "version": "[6.1.2, )"
           }
         },
         "imports": [

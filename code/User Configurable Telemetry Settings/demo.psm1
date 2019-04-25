@@ -1,4 +1,6 @@
-function Set-TelemetryOptions {
+$Script:TelemetrySetting = 'None'
+
+function Set-TelemetryOption {
 <#
 .SYNOPSIS
     Short description
@@ -21,58 +23,65 @@ function Set-TelemetryOptions {
 .FUNCTIONALITY
     The functionality that best describes this cmdlet
 #>
-    [CmdletBinding(DefaultParameterSetName='Parameter Set 1',
-                   SupportsShouldProcess=$true,
-                   PositionalBinding=$false,
-                   HelpUri = 'http://www.microsoft.com/',
-                   ConfirmImpact='Medium')]
-    [Alias()]
+    [CmdletBinding(PositionalBinding=$true)]
     [OutputType([String])]
     Param (
-        # Param1 help description
-        [Parameter(Mandatory=$true,
-                   Position=0,
-                   ValueFromPipeline=$true,
-                   ValueFromPipelineByPropertyName=$true,
-                   ValueFromRemainingArguments=$false, 
-                   ParameterSetName='Parameter Set 1')]
-        [ValidateNotNull()]
-        [ValidateNotNullOrEmpty()]
-        [ValidateCount(0,5)]
-        [ValidateSet("sun", "moon", "earth")]
-        [Alias("p1")] 
-        $Param1,
-        
-        # Param2 help description
-        [Parameter(ParameterSetName='Parameter Set 1')]
-        [AllowNull()]
-        [AllowEmptyCollection()]
-        [AllowEmptyString()]
-        [ValidateScript({$true})]
-        [ValidateRange(0,5)]
-        [int]
-        $Param2,
-        
-        # Param3 help description
-        [Parameter(ParameterSetName='Another Parameter Set')]
-        [ValidatePattern("[a-z]*")]
-        [ValidateLength(0,15)]
-        [String]
-        $Param3
+        # Telemetery levels
+        [Parameter(Mandatory)]
+        [ValidateSet('None', 'Full')]
+        [string]
+        $TelemetryLevel
     )
     
     begin {
+        'preset is {0}' -f $Script:TelemetrySetting
     }
     
     process {
-        if ($pscmdlet.ShouldProcess("Target", "Operation")) {
-            
-        }
+        @{TelemeteryLevel=$TelemetryLevel} | ConvertTo-Json -Compress #| Out-File -FilePath $env:ProgramData
     }
     
     end {
     }
 }
+
+function Get-TelemetryOption {
+    <#
+    .SYNOPSIS
+        Short description
+    .DESCRIPTION
+        Long description
+    .EXAMPLE
+        Example of how to use this cmdlet
+    .EXAMPLE
+        Another example of how to use this cmdlet
+    .INPUTS
+        Inputs to this cmdlet (if any)
+    .OUTPUTS
+        Output from this cmdlet (if any)
+    .NOTES
+        General notes
+    .COMPONENT
+        The component this cmdlet belongs to
+    .ROLE
+        The role this cmdlet belongs to
+    .FUNCTIONALITY
+        The functionality that best describes this cmdlet
+    #>
+        [CmdletBinding()]
+        [OutputType([String])]
+        Param ()
+        
+        begin {
+        }
+        
+        process {
+            $Script:TelemetrySetting
+        }
+        
+        end {
+        }
+    }
 
 function Invoke-Example {
 <#
@@ -105,36 +114,10 @@ function Invoke-Example {
     [Alias()]
     [OutputType([String])]
     Param (
-        # Param1 help description
-        [Parameter(Mandatory=$true,
-                   Position=0,
-                   ValueFromPipeline=$true,
-                   ValueFromPipelineByPropertyName=$true,
-                   ValueFromRemainingArguments=$false, 
-                   ParameterSetName='Parameter Set 1')]
-        [ValidateNotNull()]
-        [ValidateNotNullOrEmpty()]
-        [ValidateCount(0,5)]
-        [ValidateSet("sun", "moon", "earth")]
-        [Alias("p1")] 
-        $Param1,
-        
-        # Param2 help description
-        [Parameter(ParameterSetName='Parameter Set 1')]
-        [AllowNull()]
-        [AllowEmptyCollection()]
-        [AllowEmptyString()]
-        [ValidateScript({$true})]
-        [ValidateRange(0,5)]
-        [int]
-        $Param2,
-        
-        # Param3 help description
-        [Parameter(ParameterSetName='Another Parameter Set')]
-        [ValidatePattern("[a-z]*")]
-        [ValidateLength(0,15)]
-        [String]
-        $Param3
+        # Parameter help description
+        [Parameter(AttributeValues)]
+        [ParameterType]
+        $ParameterName
     )
     
     begin {
