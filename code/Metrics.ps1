@@ -1,5 +1,5 @@
 # Track metric
-$tc.TrackEvent('metric name', [double]::MaxValue)
+$tc.TrackMetric('metric name', [double]::MaxValue)
 
 # [Microsoft.ApplicationInsights.DataContracts.MetricTelemetry]::new()
 # Microsoft.ApplicationInsights.DataContracts.MetricTelemetry new()
@@ -7,7 +7,7 @@ $tc.TrackEvent('metric name', [double]::MaxValue)
 # Microsoft.ApplicationInsights.DataContracts.MetricTelemetry new(string name, int count, double sum, double min, double max, double standardDeviation)
 # Microsoft.ApplicationInsights.DataContracts.MetricTelemetry new(string metricNamespace, string name, int count, double sum, double min, double max, double standardDeviation)
 
-# Track an execuation of something
+# Track an execution of something
 $tc.TrackPageView('name of item ran')
 
 function Invoke-MetricExample {
@@ -34,3 +34,5 @@ function Invoke-MetricExample {
     end {
     }
 }
+
+$tc.Flush()

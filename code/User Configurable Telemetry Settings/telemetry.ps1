@@ -1,1 +1,1 @@
-Write-Warning -Message 'Set telemetry levels with Set-TelemetryOptions'
+Write-Warning -Message 'Set telemetry levels with Set-TelemetryOption'
