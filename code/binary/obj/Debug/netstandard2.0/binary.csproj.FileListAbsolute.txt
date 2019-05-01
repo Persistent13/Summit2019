@@ -1,0 +1,8 @@
+C:\Users\Dakota\Documents\Git\Summit2019\code\binary\bin\Debug\netstandard2.0\binary.deps.json
+C:\Users\Dakota\Documents\Git\Summit2019\code\binary\bin\Debug\netstandard2.0\binary.dll
+C:\Users\Dakota\Documents\Git\Summit2019\code\binary\bin\Debug\netstandard2.0\binary.pdb
+C:\Users\Dakota\Documents\Git\Summit2019\code\binary\obj\Debug\netstandard2.0\binary.csproj.CoreCompileInputs.cache
+C:\Users\Dakota\Documents\Git\Summit2019\code\binary\obj\Debug\netstandard2.0\binary.AssemblyInfoInputs.cache
+C:\Users\Dakota\Documents\Git\Summit2019\code\binary\obj\Debug\netstandard2.0\binary.AssemblyInfo.cs
+C:\Users\Dakota\Documents\Git\Summit2019\code\binary\obj\Debug\netstandard2.0\binary.dll
+C:\Users\Dakota\Documents\Git\Summit2019\code\binary\obj\Debug\netstandard2.0\binary.pdb

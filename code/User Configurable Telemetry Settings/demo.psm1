@@ -1,32 +1,8 @@
-$Script:TelemetrySetting = 'None'
-
 function Set-TelemetryOption {
-<#
-.SYNOPSIS
-    Short description
-.DESCRIPTION
-    Long description
-.EXAMPLE
-    Example of how to use this cmdlet
-.EXAMPLE
-    Another example of how to use this cmdlet
-.INPUTS
-    Inputs to this cmdlet (if any)
-.OUTPUTS
-    Output from this cmdlet (if any)
-.NOTES
-    General notes
-.COMPONENT
-    The component this cmdlet belongs to
-.ROLE
-    The role this cmdlet belongs to
-.FUNCTIONALITY
-    The functionality that best describes this cmdlet
-#>
     [CmdletBinding(PositionalBinding=$true)]
     [OutputType([String])]
     Param (
-        # Telemetery levels
+        # Telemetry levels
         [Parameter(Mandatory)]
         [ValidateSet('None', 'Full')]
         [string]
@@ -34,11 +10,11 @@ function Set-TelemetryOption {
     )
     
     begin {
-        'preset is {0}' -f $Script:TelemetrySetting
     }
     
     process {
-        @{TelemeteryLevel=$TelemetryLevel} | ConvertTo-Json -Compress #| Out-File -FilePath $env:ProgramData
+        @{TelemetryLevel=$TelemetryLevel} | ConvertTo-Json -Compress | Out-File -FilePath $env:ProgramData\Telemetry\config.json
+        $script:TelemetrySetting = $TelemetryLevel
     }
     
     end {
@@ -46,28 +22,6 @@ function Set-TelemetryOption {
 }
 
 function Get-TelemetryOption {
-    <#
-    .SYNOPSIS
-        Short description
-    .DESCRIPTION
-        Long description
-    .EXAMPLE
-        Example of how to use this cmdlet
-    .EXAMPLE
-        Another example of how to use this cmdlet
-    .INPUTS
-        Inputs to this cmdlet (if any)
-    .OUTPUTS
-        Output from this cmdlet (if any)
-    .NOTES
-        General notes
-    .COMPONENT
-        The component this cmdlet belongs to
-    .ROLE
-        The role this cmdlet belongs to
-    .FUNCTIONALITY
-        The functionality that best describes this cmdlet
-    #>
         [CmdletBinding()]
         [OutputType([String])]
         Param ()
@@ -76,7 +30,7 @@ function Get-TelemetryOption {
         }
         
         process {
-            $Script:TelemetrySetting
+            Get-Content -Raw -Path $env:ProgramData\Telemetry\config.json | ConvertFrom-Json | Select-Object -ExpandProperty TelemetryLevel
         }
         
         end {
@@ -84,51 +38,27 @@ function Get-TelemetryOption {
     }
 
 function Invoke-Example {
-<#
-.SYNOPSIS
-    Short description
-.DESCRIPTION
-    Long description
-.EXAMPLE
-    Example of how to use this cmdlet
-.EXAMPLE
-    Another example of how to use this cmdlet
-.INPUTS
-    Inputs to this cmdlet (if any)
-.OUTPUTS
-    Output from this cmdlet (if any)
-.NOTES
-    General notes
-.COMPONENT
-    The component this cmdlet belongs to
-.ROLE
-    The role this cmdlet belongs to
-.FUNCTIONALITY
-    The functionality that best describes this cmdlet
-#>
-    [CmdletBinding(DefaultParameterSetName='Parameter Set 1',
-                   SupportsShouldProcess=$true,
-                   PositionalBinding=$false,
-                   HelpUri = 'http://www.microsoft.com/',
-                   ConfirmImpact='Medium')]
+    [CmdletBinding()]
     [Alias()]
     [OutputType([String])]
-    Param (
-        # Parameter help description
-        [Parameter(AttributeValues)]
-        [ParameterType]
-        $ParameterName
-    )
+    Param ()
     
     begin {
-    }
-    
-    process {
-        if ($pscmdlet.ShouldProcess("Target", "Operation")) {
-            
+        if ($Script:TelemetrySetting -ne 'None') {
+            Write-Verbose -Message 'Telemetry ran'
+            $script:tc.TrackPageView($pscmdlet.MyInvocation.MyCommand)
         }
     }
     
+    process {
+        'Example was invoked'
+    }
+    
     end {
+        $script:tc.Flush()
     }
 }
+
+$script:TelemetrySetting = Get-TelemetryOption
+$script:tc = [Microsoft.ApplicationInsights.TelemetryClient]::new()
+$script:tc.InstrumentationKey = 'f5b46359-41c3-4f4f-9c51-639304b82e33'

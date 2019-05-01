@@ -1,21 +1,32 @@
 ﻿using System;
 using System.Management.Automation;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
 
-namespace Summit2019
+namespace binary
 {
-    public class Class1
+    public class Module
     {
-        public class Telemetry
-        {
-            //
-        }
+        static TelemetryClient tc = new TelemetryClient(new TelemetryConfiguration("f5b46359-41c3-4f4f-9c51-639304b82e33"));
 
         public class Cmdlets
         {
-            [Cmdlet(VerbsCommon.Invoke, "TelemetryExample")]
-            public class InvokeTelemetryExample : Cmdlet
+            [Cmdlet(VerbsLifecycle.Invoke, "Example")]
+            public class InvokeExample : PSCmdlet
             {
-                //
+                protected override void BeginProcessing()
+                {
+                    WriteVerbose("telemetry ran");
+                    tc.TrackPageView(MyInvocation.MyCommand.ToString());
+                }
+                protected override void ProcessRecord()
+                {
+                    WriteObject("example invoked");
+                }
+                protected override void EndProcessing()
+                {
+                    tc.Flush();
+                }
             }
         }
     }

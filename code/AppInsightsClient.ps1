@@ -1,3 +1,4 @@
+# https://www.nuget.org/packages/Microsoft.ApplicationInsights/
 Add-Type -Path .\Microsoft.ApplicationInsights.dll
 
 # Instantiate the telemetry client class
