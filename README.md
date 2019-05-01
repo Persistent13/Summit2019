@@ -18,4 +18,4 @@
 - Need logging information of anything happening in code
 - Infrastructure handled for you
 - Integrates easily with PowerShell
-- Alerts
+- Alerting via Azure metrics

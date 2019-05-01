@@ -62,3 +62,6 @@ function Invoke-Example {
 $script:TelemetrySetting = Get-TelemetryOption
 $script:tc = [Microsoft.ApplicationInsights.TelemetryClient]::new()
 $script:tc.InstrumentationKey = 'f5b46359-41c3-4f4f-9c51-639304b82e33'
+# Run a script block when a module is unloaded
+# Does not run when powershell is closed
+$MyInvocation.MyCommand.ScriptBlock.Module.OnRemove = { $script:tc.Flush(); 'Thank you for using my module!' }
