@@ -30,6 +30,9 @@ try {
     $prop['CommandName'] = $MyInvocation.MyCommand.Name
     $prop['PSVersion'] = $PSVersionTable.PSVersion
 
+    $prop['Beers'] = 'asdf'
+    $prop['Empty'] = 23
+
     $counts = [System.Collections.Generic.Dictionary[[string],[double]]]::new()
     $counts['Loops'] = $i
 

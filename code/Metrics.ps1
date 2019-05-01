@@ -1,5 +1,6 @@
 # Track metric
 $tc.TrackMetric('metric name', [double]::MaxValue)
+$tc.Flush()
 
 # [Microsoft.ApplicationInsights.DataContracts.MetricTelemetry]::new()
 # Microsoft.ApplicationInsights.DataContracts.MetricTelemetry new()
@@ -9,6 +10,7 @@ $tc.TrackMetric('metric name', [double]::MaxValue)
 
 # Track an execution of something
 $tc.TrackPageView('name of item ran')
+$tc.Flush()
 
 function Invoke-MetricExample {
     [CmdletBinding()]
@@ -32,7 +34,6 @@ function Invoke-MetricExample {
     }
     
     end {
+        $tc.Flush()
     }
 }
-
-$tc.Flush()
